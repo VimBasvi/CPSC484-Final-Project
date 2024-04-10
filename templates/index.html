@@ -7,23 +7,67 @@
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
+  body {
+    font-family: /* The font-family from recommendations.html's style.css */, sans-serif;
+    background-color: /* Background color from recommendations.html's style.css */;
+    color: /* Primary text color from recommendations.html's style.css */;
+  }
+  .navbar {
+    background-color:  #00356b
+  }
+  .sidebar {
+    /*tbd*/
+  }
   .screen {
     display: none;
-    padding-top: 50px; /* Spacing from the top */
+    padding-top: 50px;
   }
   .active {
     display: block;
   }
+  .text-center {
+    color: #00356b; /* Yale Blue */
+  }
+  .btn {
+    margin: 5px; /* Spacing between buttons */
+  }
+  .btn-info, .btn-primary {
+    background-color: #00356b; /* Yale Blue */
+    border-color: #00356b; /* Yale Blue */
+  }
+  .btn-info:hover, .btn-primary:hover {
+    background-color: #002855; 
+  }
+  .btn-secondary {
+    background-color: #d9534f; 
+    border-color: #d9534f; 
+  }
+  .container {
+    background-color: white; 
+    border-radius: 5px;
+    box-shadow: 0 2px 4px rgba(0,0,0,.1); 
+    padding: 20px; 
+    margin-top: 20px; 
+  }
+  h1 {
+    font-size: 24px; /* Larger text for headers */
+  }
+  p.lead {
+    font-size: 18px; /* Larger text for lead paragraphs */
+  }
 </style>
+
 </head>
 <body>
+
+<nav class="navbar navbar-expand-lg navbar-dark">
+  <a class="navbar-brand" href="#">CampusFinder</a>
+</nav>
 
 <div class="container">
 	<!--potential HTML code to facilitate transitions 
 		// <button id="startButton" class="btn btn-primary">Start</button>
-	
 	-->
-
   <!-- Initial Survey Screen -->
   <div id="surveyScreen" class="screen active text-center">
     <h1>Survey Screen</h1>
@@ -58,8 +102,8 @@
 		<div id="eatQuestion" class="screen text-center">
 			<h1>Eat Question</h1>
 			<p>Are you looking for meals or drinks/snacks?</p>
-			<button onclick="transitionTo('resultGroupA')" class="btn btn-info">Meals</button>
-			<button onclick="transitionTo('resultGroupB')" class="btn btn-info">Drinks/Snacks</button>
+			<button onclick="recommendations_page/recommendations.html" class="btn btn-info">Meals</button>
+			<button onclick="recommendations_page/recommendations.html" class="btn btn-info">Drinks/Snacks</button>
 		</div>
 
 		<!-- Study Question -->
