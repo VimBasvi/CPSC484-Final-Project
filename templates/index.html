@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prototype Screens</title>
+<title>Question Tree Prototype</title>
 <!-- Bootstrap CSS -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 <style>
@@ -20,13 +20,15 @@
 
 <div class="container">
 
+  <!-- Initial Survey Screen -->
   <div id="surveyScreen" class="screen active text-center">
     <h1>Survey Screen</h1>
     <p class="lead">CampusFinder</p>
     <p>Raise your hand to get started.</p>
-    <button onclick="transitionTo('questionnaireScreen')" class="btn btn-primary">Start</button>
+    <button onclick="transitionTo('mainQuestion')" class="btn btn-primary">Start</button>
   </div>
 
+  <!-- No Activity Detected Screen -->
   <div id="noActivityScreen" class="screen text-center">
     <h1>No Activity Detected</h1>
     <p>If you are far from the screen, move closer to the screen.</p>
@@ -35,15 +37,46 @@
     <button onclick="transitionTo('surveyScreen')" class="btn btn-secondary">Try Again</button>
   </div>
 
-  <div id="questionnaireScreen" class="screen text-center">
-    <h1>Questionnaire Screen</h1>
-    <p class="lead">What are you looking for?</p>
-    <div class="btn-group" role="group" aria-label="Questionnaire Options">
-      <button onclick="transitionTo('foodQuestScreen')" class="btn btn-info">Food</button>
-      <button onclick="transitionTo('studyQuestScreen')" class="btn btn-info">Study Spot</button>
-      <button onclick="transitionTo('culturalQuestScreen')" class="btn btn-info">Cultural Spot</button>
-    </div>
+  <!-- Main Question Screen -->
+  <div id="mainQuestion" class="screen text-center">
+    <h1>Main Question</h1>
+    <p>Are you looking for places to eat, study, or connect with others?</p>
+    <button onclick="transitionTo('eatQuestion')" class="btn btn-info">Eat</button>
+    <button onclick="transitionTo('studyQuestion')" class="btn btn-info">Study</button>
+    <button onclick="transitionTo('connectQuestion')" class="btn btn-info">Connect</button>
   </div>
+
+  <!-- Subsequent Questions-->
+
+	<div class="container">
+
+		<!-- Eat Question -->
+		<div id="eatQuestion" class="screen text-center">
+			<h1>Eat Question</h1>
+			<p>Are you looking for meals or drinks/snacks?</p>
+			<button onclick="transitionTo('resultGroupA')" class="btn btn-info">Meals</button>
+			<button onclick="transitionTo('resultGroupB')" class="btn btn-info">Drinks/Snacks</button>
+		</div>
+
+		<!-- Study Question -->
+		<div id="studyQuestion" class="screen text-center">
+			<h1>Study Question</h1>
+			<p>Are you looking for larger or smaller spaces?</p>
+			<button onclick="transitionTo('resultGroupC')" class="btn btn-info">Larger</button>
+			<button onclick="transitionTo('resultGroupD')" class="btn btn-info">Smaller</button>
+		</div>
+
+		<!-- Connect Question -->
+		<div id="connectQuestion" class="screen text-center">
+			<h1>Connect Question</h1>
+			<p>Are you looking for cultural centers or spiritual spaces?</p>
+			<button onclick="transitionTo('resultGroupE')" class="btn btn-info">Cultural</button>
+			<button onclick="transitionTo('resultGroupF')" class="btn btn-info">Spiritual</button>
+		</div>
+
+		<!-- Result Groups (A-F) -->
+
+		</div>
 
 </div>
 
