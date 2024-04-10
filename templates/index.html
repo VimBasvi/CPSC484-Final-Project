@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prototype Screens</title>
+<!-- Bootstrap CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<style>
+  .screen {
+    display: none;
+    padding-top: 50px; /* Spacing from the top */
+  }
+  .active {
+    display: block;
+  }
+</style>
+</head>
+<body>
+
+<div class="container">
+
+  <div id="surveyScreen" class="screen active text-center">
+    <h1>Survey Screen</h1>
+    <p class="lead">CampusFinder</p>
+    <p>Raise your hand to get started.</p>
+    <button onclick="transitionTo('questionnaireScreen')" class="btn btn-primary">Start</button>
+  </div>
+
+  <div id="noActivityScreen" class="screen text-center">
+    <h1>No Activity Detected</h1>
+    <p>If you are far from the screen, move closer to the screen.</p>
+    <p>If you are too close to the screen, move a bit farther.</p>
+    <p>Align yourself to the camera's lens.</p>
+    <button onclick="transitionTo('surveyScreen')" class="btn btn-secondary">Try Again</button>
+  </div>
+
+  <div id="questionnaireScreen" class="screen text-center">
+    <h1>Questionnaire Screen</h1>
+    <p class="lead">What are you looking for?</p>
+    <div class="btn-group" role="group" aria-label="Questionnaire Options">
+      <button onclick="transitionTo('foodQuestScreen')" class="btn btn-info">Food</button>
+      <button onclick="transitionTo('studyQuestScreen')" class="btn btn-info">Study Spot</button>
+      <button onclick="transitionTo('culturalQuestScreen')" class="btn btn-info">Cultural Spot</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- Bootstrap JS, Popper.js, and jQuery -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.10/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+<script>
+function transitionTo(screenId) {
+  var screens = document.getElementsByClassName('screen');
+  for (var i = 0; i < screens.length; i++) {
+    screens[i].classList.remove('active');
+  }
+  document.getElementById(screenId).classList.add('active');
+}
+</script>
+
+</body>
+</html>
