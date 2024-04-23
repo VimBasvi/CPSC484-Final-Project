@@ -54,19 +54,20 @@ var frames = {
                     {
                         console.log("Arms up");
                         //Then we want to select this as our option
-                        option_select();
+                        option_list = option_select();
+                        current_index = 0;
                     }
                     //Check for right hand raised
                     else if(right_h.pixel.y < chest.pixel.y) {
                         //Then we want to move options to the right
                         console.log("Right hand");
-                        move_right();
+                        current_index = move_right();
                     }
                     //Check for left hand raised
                     else if(left_h.pixel.y < chest.pixel.y) {
                         //Then we want to move options to the left
                         console.log("Move left");
-                        move_left();
+                        current_index = move_left();
                     }
                 }
             }
@@ -89,16 +90,19 @@ function transitionTo(index) {
     $('.screen').removeClass('active'); 
     $('#' + option_list[current_index]).addClass('active'); 
     option_list = optionMapping[current_index];
+    return option_list;
 }
 
 // Updated move_right function
 function move_right() {
     current_index = (current_index + 1) % option_list.length;
+    return current_index;
 }
 
 // Updated move_left function
 function move_left() {
     current_index = (current_index - 1 + option_list.length) % option_list.length;
+    return current_index;
 }
 
 // Updated option_select function
@@ -107,8 +111,8 @@ function option_select() {
     console.log('Option selected:', selectedOption);
     
     // Transition to the selected option screen
-    transitionTo(selectedOption);
-
+    option_list = transitionTo(selectedOption);
+    return option_list;
 }
 
 
