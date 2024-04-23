@@ -104,5 +104,3 @@ function option_select() {
     transitionTo(selectedOption);
 
 }
-
-
