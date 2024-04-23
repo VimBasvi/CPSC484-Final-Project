@@ -54,7 +54,7 @@ var frames = {
                     {
                         console.log("Arms up");
                         //Then we want to select this as our option
-                        option_list = option_select();
+                        option_list = optionMapping(option_select());
                         current_index = 0;
                     }
                     //Check for right hand raised
