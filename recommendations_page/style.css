@@ -1,17 +1,20 @@
 /* Import Google font - Poppins */
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap");
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: "Poppins", sans-serif;
 }
+
 :root {
   --white-color: #fff;
   --blue-color: #4070f4;
   --grey-color: #707070;
   --grey-color-light: #aaa;
 }
+
 body {
   background-color: #e7f2fd;
   transition: all 0.5s ease;
@@ -31,6 +34,7 @@ body {
   z-index: 1000;
   box-shadow: 0 0 2px var(--grey-color-light);
 }
+
 .logo_item {
   display: flex;
   align-items: center;
@@ -39,17 +43,27 @@ body {
   font-weight: 500;
   color: var(--blue-color);
 }
+
 .navbar img {
   width: 35px;
   height: 35px;
   object-fit: cover;
   border-radius: 50%;
 }
+
 .navbar_content {
   display: flex;
   align-items: center;
   column-gap: 25px;
 }
+
+iframe {
+  position: fixed;
+  left: 260px;
+  width: calc(100% - 260px);
+  height: 100%;
+}
+
 /* sidebar */
 .sidebar {
   background-color: var(--white-color);
@@ -64,18 +78,22 @@ body {
   box-shadow: 0 0 1px var(--grey-color-light);
   transition: all 0.5s ease;
 }
+
 .menu_content {
   position: relative;
 }
+
 .menu_title {
   margin: 15px 0;
   padding: 0 20px;
   font-size: 18px;
 }
+
 .menu_title {
   color: var(--grey-color);
   white-space: nowrap;
 }
+
 .menu_dahsboard::before {
   content: "Recommendations";
 }
@@ -84,6 +102,7 @@ body {
   padding: 0;
   list-style: none;
 }
+
 /* .navlink_icon {
   position: relative;
   font-size: 22px;
@@ -104,7 +123,7 @@ body {
   white-space: nowrap;
 }
 
-.nav_link .distance{
+.nav_link .distance {
   display: flex;
   align-items: right;
   width: 100%;
@@ -136,6 +155,7 @@ body {
   cursor: pointer;
   transition: all 0.5s ease;
 }
+
 .bottom {
   position: absolute;
   display: flex;
@@ -149,9 +169,11 @@ body {
   border-top: 1px solid var(--grey-color-light);
   background-color: var(--white-color);
 }
+
 .bottom i {
   font-size: 20px;
 }
+
 .bottom span {
   font-size: 15px;
 }
