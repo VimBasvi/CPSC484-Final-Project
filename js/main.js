@@ -33,7 +33,7 @@ var frames = {
             //Then there is at least one person in from
             if(data.people.length > 0)
             {
-                console.log("Person detected");
+                console.log("Person detected", data.people.length);
                 //Transition screens
                 //transitionTo('mainQuestion');
                 //Right hand is joint 15
@@ -54,22 +54,27 @@ var frames = {
                     {
                         console.log("Arms up");
                         //Then we want to select this as our option
-                        option_list = optionMapping(option_select());
+                        option_list = optionMapping[option_select(option_list, current_index)];
                         current_index = 0;
                     }
                     //Check for right hand raised
                     else if(right_h.pixel.y < chest.pixel.y) {
                         //Then we want to move options to the right
                         console.log("Right hand");
-                        current_index = move_right();
+                        current_index = move_right(option_list, current_index);
                     }
                     //Check for left hand raised
                     else if(left_h.pixel.y < chest.pixel.y) {
                         //Then we want to move options to the left
                         console.log("Move left");
-                        current_index = move_left();
+                        current_index = move_left(option_list, current_index);
                     }
                 }
+            }
+            else {
+                //exit to the start page
+                transitionTo('Pre_startPage');
+                option_list = optionMapping['Pre_startPage'];
             }
         }
 
@@ -83,36 +88,38 @@ var frames = {
 
 
 // This function handles transitioning between screens
-function transitionTo(index) {
+function transitionTo(selectedOption) {
     //current_index = index;
     console.log("Transition scene");
     //Transition to the new screen
     $('.screen').removeClass('active'); 
-    $('#' + option_list[current_index]).addClass('active'); 
-    option_list = optionMapping[current_index];
+    $('#' + selectedOption).addClass('active'); 
+    option_list = optionMapping[selectedOption];
+    console.log("OPTION LIST TRANSIT: ", option_list);
     return option_list;
 }
 
 // Updated move_right function
-function move_right() {
+function move_right(option_list, current_index) {
     current_index = (current_index + 1) % option_list.length;
     return current_index;
 }
 
 // Updated move_left function
-function move_left() {
+function move_left(option_list, current_index) {
     current_index = (current_index - 1 + option_list.length) % option_list.length;
     return current_index;
 }
 
 // Updated option_select function
-function option_select() {
+function option_select(option_list, current_index) {
     var selectedOption = option_list[current_index];
-    console.log('Option selected:', selectedOption);
+    console.log("Option selected:", selectedOption);
     
     // Transition to the selected option screen
-    option_list = transitionTo(selectedOption);
-    return option_list;
+    transitionTo(selectedOption);
+    console.log("OPtions: ", option_list);
+    return selectedOption;
 }
 
 
