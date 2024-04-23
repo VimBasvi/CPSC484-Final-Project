@@ -3,18 +3,19 @@ var host = "cpsc484-04.stdusr.yale.internal:8888";
 
 //This can store the options for each question. populate it based on our current screen 
 var optionMapping = {
+    'Pre_startPage': ['mainQuestion'],
     'mainQuestion': ['eatQuestion', 'studyQuestion', 'connectQuestion'],
     'eatQuestion': ['resultGroupA', 'resultGroupB'],
     'studyQuestion': ['resultGroupC', 'resultGroupD'],
     'connectQuestion': ['resultGroupE', 'resultGroupF']
 };
 
-var option_list = optionMapping['mainQuestion'];
+var option_list = optionMapping['Pre_startPage'];
 var current_index = 0;
 //get the data of the user
 
 $(document).ready(function () {
-    twod.start();
+    //console.log("Starting");
     frames.start();
 });
 
@@ -32,8 +33,9 @@ var frames = {
             //Then there is at least one person in from
             if(data.people.length > 0)
             {
+                console.log("Person detected");
                 //Transition screens
-                transitionTo('mainQuestion');
+                //transitionTo('mainQuestion');
                 //Right hand is joint 15
                 //Chest is joint 2
                 //Left hand is joint 8
@@ -50,17 +52,20 @@ var frames = {
                     //Check for both hands raised
                     if(right_h.pixel.y < chest.pixel.y && left_h.pixel.y < chest.pixel.y)
                     {
+                        console.log("Arms up");
                         //Then we want to select this as our option
                         option_select();
                     }
                     //Check for right hand raised
                     else if(right_h.pixel.y < chest.pixel.y) {
                         //Then we want to move options to the right
+                        console.log("Right hand");
                         move_right();
                     }
                     //Check for left hand raised
                     else if(left_h.pixel.y < chest.pixel.y) {
                         //Then we want to move options to the left
+                        console.log("Move left");
                         move_left();
                     }
                 }
@@ -79,6 +84,7 @@ var frames = {
 // This function handles transitioning between screens
 function transitionTo(index) {
     //current_index = index;
+    console.log("Transition scene");
     //Transition to the new screen
     $('.screen').removeClass('active'); 
     $('#' + option_list[current_index]).addClass('active'); 
