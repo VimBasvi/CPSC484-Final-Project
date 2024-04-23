@@ -1,130 +1,152 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Question Tree Prototype</title>
-<!-- Bootstrap CSS -->
-<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-<style>
-  body {
-    font-family: sans-serif;
-  
-  }
-  .navbar {
-    background-color:  #00356b
-  }
-  .sidebar {
-    /*tbd*/
-  }
-  .screen {
-    display: none;
-    padding-top: 50px;
-  }
-  .active {
-    display: block;
-  }
-  .text-center {
-    color: #00356b; /* Yale Blue */
-  }
-  .btn {
-    margin: 5px; /* Spacing between buttons */
-  }
-  .btn-info, .btn-primary {
-    background-color: #00356b; /* Yale Blue */
-    border-color: #00356b; /* Yale Blue */
-  }
-  .btn-info:hover, .btn-primary:hover {
-    background-color: #002855; 
-  }
-  .btn-secondary {
-    background-color: #d9534f; 
-    border-color: #d9534f; 
-  }
-  .container {
-    background-color: white; 
-    border-radius: 5px;
-    box-shadow: 0 2px 4px rgba(0,0,0,.1); 
-    padding: 20px; 
-    margin-top: 20px; 
-  }
-  h1 {
-    font-size: 24px; /* Larger text for headers */
-  }
-  p.lead {
-    font-size: 18px; /* Larger text for lead paragraphs */
-  }
-</style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Question Tree Prototype</title>
+  <!-- Bootstrap CSS -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  <style>
+    body {
+      font-family: sans-serif;
+
+    }
+
+    .navbar {
+      background-color: #00356b
+    }
+
+    .sidebar {
+      /*tbd*/
+    }
+
+    .screen {
+      display: none;
+      padding-top: 50px;
+    }
+
+    .active {
+      display: block;
+    }
+
+    .text-center {
+      color: #00356b;
+      /* Yale Blue */
+    }
+
+    .btn {
+      margin: 5px;
+      /* Spacing between buttons */
+    }
+
+    .btn-info,
+    .btn-primary {
+      background-color: #00356b;
+      /* Yale Blue */
+      border-color: #00356b;
+      /* Yale Blue */
+    }
+
+    .btn-info:hover,
+    .btn-primary:hover {
+      background-color: #002855;
+    }
+
+    .btn-secondary {
+      background-color: #d9534f;
+      border-color: #d9534f;
+    }
+
+    .container {
+      background-color: white;
+      border-radius: 5px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
+      padding: 20px;
+      margin-top: 20px;
+    }
+
+    h1 {
+      font-size: 24px;
+      /* Larger text for headers */
+    }
+
+    p.lead {
+      font-size: 18px;
+      /* Larger text for lead paragraphs */
+    }
+  </style>
 
 </head>
+
 <body>
 
-<nav class="navbar navbar-expand-lg navbar-dark">
-  <a class="navbar-brand" href="#">CampusFinder</a>
-</nav>
+  <nav class="navbar navbar-expand-lg navbar-dark">
+    <a class="navbar-brand" href="#">CampusFinder</a>
+  </nav>
 
-<div class="container">
-	<!--potential HTML code to facilitate transitions 
+  <div class="container">
+    <!--potential HTML code to facilitate transitions 
 		// <button id="startButton" class="btn btn-primary">Start</button>
 	-->
-  <!-- Initial Survey Screen -->
-  <div id="surveyScreen" class="screen active text-center">
-    <h1>Survey Screen</h1>
-    <p class="lead">CampusFinder</p>
-    <p>Raise your hand to get started.</p>
-    <button onclick="transitionTo('mainQuestion')" class="btn btn-primary">Start</button>
-  </div>
-
-  <!-- No Activity Detected Screen -->
-  <div id="noActivityScreen" class="screen text-center">
-    <h1>No Activity Detected</h1>
-    <p>If you are far from the screen, move closer to the screen.</p>
-    <p>If you are too close to the screen, move a bit farther.</p>
-    <p>Align yourself to the camera's lens.</p>
-    <button onclick="transitionTo('surveyScreen')" class="btn btn-secondary">Try Again</button>
-  </div>
-
-  <!-- Main Question Screen -->
-  <div id="mainQuestion" class="screen text-center">
-    <h1>Main Question</h1>
-    <p>Are you looking for places to eat, study, or connect with others?</p>
-    <button onclick="transitionTo('eatQuestion')" class="btn btn-info">Eat</button>
-    <button onclick="transitionTo('studyQuestion')" class="btn btn-info">Study</button>
-    <button onclick="transitionTo('connectQuestion')" class="btn btn-info">Connect</button>
-  </div>
-
-  <!-- Subsequent Questions-->
-
-	<div class="container">
-
-		<!-- Eat Question -->
-		<div id="eatQuestion" class="screen text-center">
-      <h1>Eat Question</h1>
-      <p>Are you looking for meals or drinks/snacks?</p>
-      <a href="recommendations_page/recommendations.html" class="btn btn-info">Meals</a>
-      <a href="recommendations_page/recommendations.html" class="btn btn-info">Drinks/Snacks</a>
+    <!-- Initial Survey Screen -->
+    <div id="surveyScreen" class="screen active text-center">
+      <h1>Survey Screen</h1>
+      <p class="lead">CampusFinder</p>
+      <p>Raise your hand to get started.</p>
+      <button onclick="transitionTo('mainQuestion')" class="btn btn-primary">Start</button>
     </div>
-    
 
-		<!-- Study Question -->
-		<div id="studyQuestion" class="screen text-center">
-			<h1>Study Question</h1>
-			<p>Are you looking for larger or smaller spaces?</p>
-			<button onclick="transitionTo('resultGroupC')" class="btn btn-info">Larger</button>
-			<button onclick="transitionTo('resultGroupD')" class="btn btn-info">Smaller</button>
-		</div>
+    <!-- No Activity Detected Screen -->
+    <div id="noActivityScreen" class="screen text-center">
+      <h1>No Activity Detected</h1>
+      <p>If you are far from the screen, move closer to the screen.</p>
+      <p>If you are too close to the screen, move a bit farther.</p>
+      <p>Align yourself to the camera's lens.</p>
+      <button onclick="transitionTo('surveyScreen')" class="btn btn-secondary">Try Again</button>
+    </div>
 
-		<!-- Connect Question -->
-		<div id="connectQuestion" class="screen text-center">
-			<h1>Connect Question</h1>
-			<p>Are you looking for cultural centers or spiritual spaces?</p>
-			<button onclick="transitionTo('resultGroupE')" class="btn btn-info">Cultural</button>
-			<button onclick="transitionTo('resultGroupF')" class="btn btn-info">Spiritual</button>
-		</div>
+    <!-- Main Question Screen -->
+    <div id="mainQuestion" class="screen text-center">
+      <h1>Main Question</h1>
+      <p>Are you looking for places to eat, study, or connect with others?</p>
+      <button onclick="transitionTo('eatQuestion')" class="btn btn-info">Eat</button>
+      <button onclick="transitionTo('studyQuestion')" class="btn btn-info">Study</button>
+      <button onclick="transitionTo('connectQuestion')" class="btn btn-info">Connect</button>
+    </div>
 
-		<!-- Result Groups (A-F) -->
+    <!-- Subsequent Questions-->
 
-		</div>
+    <div class="container">
+
+      <!-- Eat Question -->
+      <div id="eatQuestion" class="screen text-center">
+        <h1>Eat Question</h1>
+        <p>Are you looking for meals or drinks/snacks?</p>
+        <a href="recommendations_page/result_group_a.html" class="btn btn-info">Meals</a>
+        <a href="recommendations_page/result_group_b.html" class="btn btn-info">Drinks/Snacks</a>
+      </div>
+
+
+      <!-- Study Question -->
+      <div id="studyQuestion" class="screen text-center">
+        <h1>Study Question</h1>
+        <p>Are you looking for larger or smaller spaces?</p>
+        <a href="recommendations_page/result_group_c.html" class="btn btn-info">Larger</a>
+        <a href="recommendations_page/result_group_d.html" class="btn btn-info">Smaller</a>
+      </div>
+
+      <!-- Connect Question -->
+      <div id="connectQuestion" class="screen text-center">
+        <h1>Connect Question</h1>
+        <p>Are you looking for cultural centers or spiritual spaces?</p>
+        <a href="recommendations_page/result_group_e.html" class="btn btn-info">Cultural</a>
+        <a href="recommendations_page/result_group_f.html" class="btn btn-info">Spiritual</a>
+      </div>
+
+      <!-- Result Groups (A-F) -->
+
+    </div>
 
 </div>
 <!--Main Script/ ajax jQuery-->
@@ -132,20 +154,21 @@
 <script src="js/main.js" type="text/javascript"></script>
 
 
-<!-- Bootstrap JS, Popper.js, and jQuery -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.10/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  <!-- Bootstrap JS, Popper.js, and jQuery -->
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.10/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
-<script>
-function transitionTo(screenId) {
-  var screens = document.getElementsByClassName('screen');
-  for (var i = 0; i < screens.length; i++) {
-    screens[i].classList.remove('active');
-  }
-  document.getElementById(screenId).classList.add('active');
-}
-</script>
+  <script>
+    function transitionTo(screenId) {
+      var screens = document.getElementsByClassName('screen');
+      for (var i = 0; i < screens.length; i++) {
+        screens[i].classList.remove('active');
+      }
+      document.getElementById(screenId).classList.add('active');
+    }
+  </script>
 
 </body>
+
 </html>
