@@ -3,15 +3,24 @@ var host = "cpsc484-04.stdusr.yale.internal:8888";
 
 //This can store the options for each question. populate it based on our current screen 
 var optionMapping = {
-    'Pre_startPage': ['mainQuestion'],
+    'surveyScreen': ['mainQuestion'],
     'mainQuestion': ['eatQuestion', 'studyQuestion', 'connectQuestion'],
-    'eatQuestion': ['resultGroupA', 'resultGroupB'],
-    'studyQuestion': ['resultGroupC', 'resultGroupD'],
-    'connectQuestion': ['resultGroupE', 'resultGroupF']
+    'eatQuestion': ['recommendations_page/result_group_a.html', 'recommendations_page/result_group_b.html'],
+    'studyQuestion': ['recommendations_page/result_group_c.html', 'recommendations_page/result_group_d.html'],
+    'connectQuestion': ['recommendations_page/result_group_e.html', 'recommendations_page/result_group_f.html'],
+    'recommendations_page/result_group_a.html': ['surveyScreen'],
+    'recommendations_page/result_group_b.html': ['surveyScreen'],
+    'recommendations_page/result_group_c.html': ['surveyScreen'],
+    'recommendations_page/result_group_d.html': ['surveyScreen'],
+    'recommendations_page/result_group_e.html': ['surveyScreen'],
+    'recommendations_page/result_group_f.html': ['surveyScreen']
+
 };
 
-var option_list = optionMapping['Pre_startPage'];
+var option_list = optionMapping['surveyScreen'];
 var current_index = 0;
+//Keep track of weather arms are already up
+var reset = true;
 //get the data of the user
 
 $(document).ready(function () {
@@ -52,29 +61,48 @@ var frames = {
                     //Check for both hands raised
                     if(right_h.pixel.y < chest.pixel.y && left_h.pixel.y < chest.pixel.y)
                     {
-                        console.log("Arms up");
-                        //Then we want to select this as our option
-                        option_list = optionMapping[option_select(option_list, current_index)];
-                        current_index = 0;
+                        if(reset == true){
+                            reset = false;
+                            console.log("Arms up");
+                            //Then we want to select this as our option
+                            option_list = optionMapping[option_select(option_list, current_index)];
+                            current_index = 0;
+                        }
+        
                     }
                     //Check for right hand raised
                     else if(right_h.pixel.y < chest.pixel.y) {
                         //Then we want to move options to the right
-                        console.log("Right hand");
-                        current_index = move_right(option_list, current_index);
+                        if(reset == true)
+                        {
+                            reset = false;
+                            console.log("Right hand");
+                            current_index = move_right(option_list, current_index);
+                            
+                        }
+
                     }
                     //Check for left hand raised
                     else if(left_h.pixel.y < chest.pixel.y) {
                         //Then we want to move options to the left
-                        console.log("Move left");
-                        current_index = move_left(option_list, current_index);
+                        if(reset == true)
+                        {
+                            reset = false;
+                            console.log("Move left");
+                            current_index = move_left(option_list, current_index);
+                        }
+
+                    }
+                    else{
+                        //no arms are raised
+                        reset = true;
                     }
                 }
             }
             else {
                 //exit to the start page
-                transitionTo('Pre_startPage');
-                option_list = optionMapping['Pre_startPage'];
+                transitionTo('surveyScreen');
+                option_list = optionMapping['surveyScreen'];
             }
         }
 
@@ -98,6 +126,10 @@ function transitionTo(selectedOption) {
     console.log("OPTION LIST TRANSIT: ", option_list);
     return option_list;
 }
+function results_page(pageId) {
+    window.location.href = pageId;
+}
+
 
 // Updated move_right function
 function move_right(option_list, current_index) {
@@ -113,11 +145,23 @@ function move_left(option_list, current_index) {
 
 // Updated option_select function
 function option_select(option_list, current_index) {
+
     var selectedOption = option_list[current_index];
     console.log("Option selected:", selectedOption);
-    
+    if(selectedOption == null)
+    {
+        selectedOption = optionMapping['surveyScreen'];
+    }
+    if(selectedOption == 'surveyScreen' || selectedOption == 'mainQuestion' || selectedOption == 'eatQuestion' || selectedOption == 'studyQuestion' || selectedOption == 'connectQuestion' )
+    {
     // Transition to the selected option screen
-    transitionTo(selectedOption);
+        transitionTo(selectedOption);
+    }
+    
+    else{
+        results_page(selectedOption);
+    }
+
     console.log("OPtions: ", option_list);
     return selectedOption;
 }
