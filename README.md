@@ -3,7 +3,7 @@ Developing an application to help Yale University Students access Resources Near
 
 # Options to run Code from computer
 
-## Viewing `index.html` with Live Server in Visual Studio Code
+### Viewing `index.html` with Live Server in Visual Studio Code
 
 To view your `index.html` in a web browser using the "Live Server" extension, follow these steps:
 
@@ -37,3 +37,34 @@ If you prefer not to use "Live Server":
    - After making changes to your HTML file, refresh the browser manually to see updates.
    - Press `F5` or use the refresh button in your browser.
 
+---
+
+# Project Description
+
+CampusFinder helps students find resources on campus by answering a simple set of questions!
+
+### Problem Space
+
+Yale and broader New Haven has numerous resources for all sorts of purposes and needs. Yet, these resources are often underutilized because they are difficult to find, or students simply do not know about them.
+
+### Tasks
+
+1. View available resources in New Haven
+
+2. Obtain customized resources based on preferences
+
+### Constraints
+
+The tool must be used by only one student at a time, and their body (including raised arms) must be visible. Thus, we recommend users to stand a couple feet away to ensure the camera captures all the necessary points.
+
+---
+
+# Collaboration Record
+
+Kelsie Williams kw759 worked on the HTML and CSS for the web pages, primarily the results pages.
+
+Kaiden Brown kjb82 worked on motion detection via the Kinect, as well as movement logic and user input.
+
+Vimbisai  Basvi vmb42 worked on the program logic (i.e. the JS parts) and connection between pages.
+
+Jesse Chen jbc87 worked on the resource database, and generating and embedding maps in the results page.
