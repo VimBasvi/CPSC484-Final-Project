@@ -5,96 +5,90 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Question Tree Prototype</title>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-  <style>
-    body {
-      font-family: sans-serif;
+  <!-- Tailwind CSS -->
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css" />
+  <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:400,700" rel="stylesheet" />
+<style>
+  .gradient {
+    background: linear-gradient(90deg, #0070c5 0%, #80c4ea 100%);
+  }
 
-    }
+  * body {
+    font-family: sans-serif;
 
-    .navbar {
-      background-color: #00356b
-    }
+  }
 
-    .sidebar {
-      /*tbd*/
-    }
+  .screen {
+    display: none;
+  }
 
-    .screen {
-      display: none;
-      padding-top: 50px;
-    }
+  .active {
+    display: block;
+  }
 
-    .active {
-      display: block;
-    }
+  .text-center {
+    color: #00356b;
+    /* Yale Blue */
+  }
 
-    .text-center {
-      color: #00356b;
-      /* Yale Blue */
-    }
+  .container {
+    border-radius: 5px;
+    padding: 20px;
+    margin-top: 20px;
+  }
 
-    .btn {
-      margin: 5px;
-      /* Spacing between buttons */
-    }
+  .container .questions {
+    border-radius: 75px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .3);
+    padding: 20px;
+    margin-top: 5%;
+    margin-left: 10%;
+    margin-right: 10%;
+  }
 
-    .btn-info,
-    .btn-primary {
-      background-color: #00356b;
-      /* Yale Blue */
-      border-color: #00356b;
-      /* Yale Blue */
-    }
+  h1 {
+    font-size: 24px;
+    /* Larger text for headers */
+  }
 
-    .btn-info:hover,
-    .btn-primary:hover {
-      background-color: #002855;
-    }
+  p.lead {
+    font-size: 18px;
+    /* Larger text for lead paragraphs */
+  }
+</style>
 
-    .btn-secondary {
-      background-color: #d9534f;
-      border-color: #d9534f;
-    }
-
-    .container {
-      background-color: white;
-      border-radius: 5px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, .1);
-      padding: 20px;
-      margin-top: 20px;
-    }
-
-    h1 {
-      font-size: 24px;
-      /* Larger text for headers */
-    }
-
-    p.lead {
-      font-size: 18px;
-      /* Larger text for lead paragraphs */
-    }
-  </style>
 
 </head>
 
-<body>
+<body class="leading-normal tracking-normal text-white gradient" style="font-family: 'Source Sans Pro', sans-serif;">
 
-  <nav class="navbar navbar-expand-lg navbar-dark">
-    <a class="navbar-brand" href="#">CampusFinder</a>
-  </nav>
 
-  <div class="container">
-    <!--potential HTML code to facilitate transitions 
+<div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+  <div class="pt-24"></div>    <!--potential HTML code to facilitate transitions 
 		// <button id="startButton" class="btn btn-primary">Start</button>
 	-->
-    <!-- Initial Survey Screen -->
+     <!-- Initial Survey Screen -->
     <div id="surveyScreen" class="screen active text-center">
-      <h1>Survey Screen</h1>
-      <p class="lead">CampusFinder</p>
-      <p>Raise both hands above your head to get started.</p>
-      <button onclick="transitionTo('mainQuestion')" class="btn btn-primary">Start</button>
+      <!--Hero-->
+      <div class="pt-24">
+        <div class="container px-3 mx-auto flex flex-wrap flex-col md:flex-row items-center">
+          <!--Left Col-->
+          <div class="flex flex-col w-full md:w-2/5 justify-center items-start text-center md:text-left">
+            <p class="tracking-loose w-full">Need help finding where to go?</p>
+            <h1 class="text-5xl font-bold leading-tight">
+              CampusFinder
+            </h1>
+            <p class="leading-normal text-2xl mb-8">
+              Take this quiz and get recommendations for spots on campus. Meals, study spots, cultural spaces and more!
+            </p>
+            <button
+            onclick="transitionTo('mainQuestion')"
+              class="hover:bg-blue-700 mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">
+              Raise your hands to get started
+            </button>
+          </div>
+        </div> 
+      </div>
     </div>
 
     <!-- No Activity Detected Screen -->
@@ -106,26 +100,40 @@
       <button onclick="transitionTo('surveyScreen')" class="btn btn-secondary">Try Again</button>
     </div>
 
-    <!-- Main Question Screen -->
-    <div id="mainQuestion" class="screen text-center">
-      <h1>Main Question</h1>
-      <p>Are you looking for places to eat, study, or connect with others? </p>
-      <p>Scroll through options forward with left hand or options rightward with right hand. Raise both hands when selecting an option.</p>
-      <button onclick="transitionTo('eatQuestion')" class="btn btn-info">Eat</button>
-      <button onclick="transitionTo('studyQuestion')" class="btn btn-info">Study</button>
-      <button onclick="transitionTo('connectQuestion')" class="btn btn-info">Connect</button>
-    </div>
+    
+    <div class="container questions">
+      <!-- Main Question Screen -->
+      <div id="mainQuestion" class="screen text-center">
+        <h1 class="font-semibold">Main Question</h1>
+        <p class="font-semibold">Are you looking for places to eat, study, or connect with others?</p>
+        <button onclick="transitionTo('eatQuestion')"
+          class="hover:bg-blue-700 mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">Eat</button>
+        <button onclick="transitionTo('studyQuestion')"
+          class="hover:bg-blue-700  mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">Study</button>
+        <button onclick="transitionTo('connectQuestion')"
+          class="hover:bg-blue-700 mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">Connect</button>
+        <div class="text-center py-4 lg:px-4">
+          <div class="items-center text-indigo-100 leading-none lg:rounded-md flex lg:inline-flex">
+            <span class="font-semibold mr-2 text-white  flex-auto">To scroll left & right through options raise your
+              corresponding arm. Then raise both hands to select your pick!</span>
+          </div>
+        </div>
+      </div>
 
     <!-- Subsequent Questions-->
-
-    <div class="container">
 
       <!-- Eat Question -->
       <div id="eatQuestion" class="screen text-center">
         <h1>Eat Question</h1>
         <p>Are you looking for meals or drinks/snacks?</p>
-        <button onclick="results_page('recommendations_page/result_group_a.html')" class="btn btn-info">Meals</a>
-        <button onclick="results_page('recommendations_page/result_group_b.html')" class="btn btn-info">Drinks/Snacks</a>
+        <button onclick="results_page('recommendations_page/result_group_a.html')" class="hover:bg-blue-700  mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">Meals</button>
+        <button onclick="results_page('recommendations_page/result_group_b.html')" class="hover:bg-blue-700  mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">Drinks/Snacks</button>
+      <div class="text-center py-4 lg:px-4">
+        <div class="items-center text-indigo-100 leading-none lg:rounded-md flex lg:inline-flex">
+          <span class="font-semibold mr-2 text-white  flex-auto">To scroll left & right through options raise your
+            corresponding arm. Then raise both hands to select your pick!</span>
+        </div>
+      </div>
       </div>
 
       
@@ -133,16 +141,28 @@
       <div id="studyQuestion" class="screen text-center">
         <h1>Study Question</h1>
         <p>Are you looking for larger or smaller spaces?</p>
-        <button onclick="results_page('recommendations_page/result_group_c.html')" class="btn btn-info">Larger</a>
-        <button onclick="results_page('recommendations_page/result_group_d.html')" class="btn btn-info">Smaller</a>
+        <button onclick="results_page('recommendations_page/result_group_c.html')" class="hover:bg-blue-700  mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">Larger</button>
+        <button onclick="results_page('recommendations_page/result_group_d.html')" class="hover:bg-blue-700  mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">Smaller</button>
+    <div class="text-center py-4 lg:px-4">
+      <div class="items-center text-indigo-100 leading-none lg:rounded-md flex lg:inline-flex">
+        <span class="font-semibold mr-2 text-white  flex-auto">To scroll left & right through options raise your
+          corresponding arm. Then raise both hands to select your pick!</span>
+      </div>
+    </div>
       </div>
 
       <!-- Connect Question -->
       <div id="connectQuestion" class="screen text-center">
         <h1>Connect Question</h1>
         <p>Are you looking for cultural centers or spiritual spaces?</p>
-        <button onclick="results_page('recommendations_page/result_group_e.html')" class="btn btn-info">Cultural</a>
-        <button onclick="results_page('recommendations_page/result_group_f.html')" class="btn btn-info">Spiritual</a>
+        <button onclick="results_page('recommendations_page/result_group_e.html')" class="hover:bg-blue-700  mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">Cultural</button>
+        <button onclick="results_page('recommendations_page/result_group_f.html')" class="hover:bg-blue-700  mx-auto lg:mx-0 hover:underline bg-white text-gray-800 font-bold rounded-full my-6 py-4 px-8 shadow-lg focus:outline-none focus:shadow-outline transform transition hover:scale-105 duration-300 ease-in-out">Spiritual</button>
+          <div class="text-center py-4 lg:px-4">
+            <div class="items-center text-indigo-100 leading-none lg:rounded-md flex lg:inline-flex">
+              <span class="font-semibold mr-2 text-white  flex-auto">To scroll left & right through options raise your
+                corresponding arm. Then raise both hands to select your pick!</span>
+            </div>
+          </div>
       </div>
 
       <!-- Result Groups (A-F) -->

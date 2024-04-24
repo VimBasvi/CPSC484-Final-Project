@@ -64,15 +64,14 @@ iframe {
   height: 100%;
 }
 
-/* sidebar */
 .sidebar {
   background-color: var(--white-color);
-  width: 260px;
+  width: 320px;
   position: fixed;
   top: 0;
   left: 0;
   height: 100%;
-  padding: 80px 20px;
+  padding: 80px 5px;
   z-index: 100;
   overflow-y: scroll;
   box-shadow: 0 0 1px var(--grey-color-light);
@@ -103,15 +102,7 @@ iframe {
   list-style: none;
 }
 
-/* .navlink_icon {
-  position: relative;
-  font-size: 22px;
-  min-width: 50px;
-  line-height: 40px;
-  display: inline-block;
-  text-align: center;
-  border-radius: 6px;
-} */
+
 .sidebar .nav_link {
   display: flex;
   align-items: center;
