@@ -1,6 +1,26 @@
 # CPSC484-Final-Project
 Developing an application to help Yale University Students access Resources Near Them.
 
+# Project Description
+
+CampusFinder helps students find resources on campus by answering a simple set of questions!
+
+### Problem Space
+
+Yale and broader New Haven has numerous resources for all sorts of purposes and needs. Yet, these resources are often underutilized because they are difficult to find, or students simply do not know about them.
+
+### Tasks
+
+1. View available resources in New Haven
+
+2. Obtain customized resources based on preferences
+
+### Constraints
+
+The tool must be used by only one student at a time, and their body (including raised arms) must be visible. Thus, we recommend users to stand a couple feet away to ensure the camera captures all the necessary points.
+
+---
+
 # Options to run Code from computer
 
 ### Viewing `index.html` with Live Server in Visual Studio Code
@@ -36,26 +56,6 @@ If you prefer not to use "Live Server":
 3. **Refresh Manually**:
    - After making changes to your HTML file, refresh the browser manually to see updates.
    - Press `F5` or use the refresh button in your browser.
-
----
-
-# Project Description
-
-CampusFinder helps students find resources on campus by answering a simple set of questions!
-
-### Problem Space
-
-Yale and broader New Haven has numerous resources for all sorts of purposes and needs. Yet, these resources are often underutilized because they are difficult to find, or students simply do not know about them.
-
-### Tasks
-
-1. View available resources in New Haven
-
-2. Obtain customized resources based on preferences
-
-### Constraints
-
-The tool must be used by only one student at a time, and their body (including raised arms) must be visible. Thus, we recommend users to stand a couple feet away to ensure the camera captures all the necessary points.
 
 ---
 
